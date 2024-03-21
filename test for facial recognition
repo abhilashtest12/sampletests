@@ -1,0 +1,55 @@
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>3.141.59</version> <!-- Or the latest version -->
+</dependency>
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class FacialRecognitionLogin {
+    public static void main(String[] args) {
+        // Set the path to the ChromeDriver executable
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+
+        // Initialize ChromeDriver
+        WebDriver driver = new ChromeDriver();
+
+        // Navigate to the login page
+        driver.get("https://example.com/login");
+
+        // Locate username and password fields
+        WebElement usernameField = driver.findElement(By.id("username"));
+        WebElement passwordField = driver.findElement(By.id("password"));
+        WebElement loginButton = driver.findElement(By.id("login-button"));
+
+        // Simulate facial recognition (dummy implementation)
+        boolean facialRecognitionSuccess = performFacialRecognition();
+
+        // If facial recognition is successful, enter credentials and login
+        if (facialRecognitionSuccess) {
+            // Enter username and password
+            usernameField.sendKeys("your_username");
+            passwordField.sendKeys("your_password");
+
+            // Click login button
+            loginButton.click();
+
+            // Add assertions or further actions based on login success/failure
+        } else {
+            System.out.println("Facial recognition failed. Unable to login.");
+        }
+
+        // Close the browser
+        driver.quit();
+    }
+
+    // Dummy implementation of facial recognition
+    private static boolean performFacialRecognition() {
+        // Your facial recognition logic goes here
+        // Return true if recognition is successful, false otherwise
+        return true; // Dummy implementation (always returns true)
+    }
+}
